@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+:root {
+  --red: #C0392B;
+  --red-light: #E74C3C;
+  --dark: #080B10;
+  --dark2: #0E1218;
+  --dark3: #141922;
+  --slate: #7A8FA8;
+  --light: #E8EEF6;
+  --accent: #2563EB;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: #080B10;
+  color: #E8EEF6;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 { font-family: 'Syne', sans-serif; }
+
+::selection { background: rgba(192,57,43,0.3); color: white; }
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #080B10; }
+::-webkit-scrollbar-thumb { background: rgba(192,57,43,0.4); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(192,57,43,0.7); }
