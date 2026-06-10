@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
@@ -42,33 +43,28 @@ export default function Navbar() {
           alignItems: "center",
           justifyContent: "space-between",
           padding: "1.1rem 6%",
-          background: scrolled ? "rgba(8,11,16,0.98)" : "rgba(8,11,16,0.8)",
+          background: scrolled ? "rgba(255,255,255,0.92)" : "rgba(255,255,255,0.7)",
           backdropFilter: "blur(16px)",
-          borderBottom: "1px solid rgba(255,255,255,0.06)",
-          transition: "background 0.3s",
+          WebkitBackdropFilter: "blur(16px)",
+          borderBottom: scrolled ? "1px solid var(--line)" : "1px solid transparent",
+          transition: "background 0.3s, border-color 0.3s",
         }}
       >
         {/* Logo */}
         <a
           href="#home"
           onClick={(e) => { e.preventDefault(); handleNav("#home"); }}
-          style={{ display: "flex", alignItems: "center", gap: "0.7rem", textDecoration: "none" }}
+          style={{ display: "flex", alignItems: "center", textDecoration: "none" }}
+          aria-label="PLUTUS Integrated Services & Resources Ltd — home"
         >
-          <div style={{
-            width: 38, height: 38, borderRadius: 8,
-            background: "#C0392B",
-            display: "flex", alignItems: "center", justifyContent: "center",
-            fontFamily: "'Syne', sans-serif", fontWeight: 800,
-            fontSize: "1rem", color: "white",
-          }}>P</div>
-          <div style={{ lineHeight: 1.2 }}>
-            <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: "1rem", color: "#fff" }}>
-              PLUTUS
-            </div>
-            <div style={{ fontSize: "0.6rem", color: "#7A8FA8", letterSpacing: "0.07em", textTransform: "uppercase" }}>
-              Integrated Services & Resources
-            </div>
-          </div>
+          <Image
+            src="/plutus-logo.png"
+            alt="PLUTUS Integrated Services & Resources Ltd"
+            width={150}
+            height={60}
+            priority
+            style={{ height: 56, width: "auto", display: "block" }}
+          />
         </a>
 
         {/* Desktop Links */}
@@ -80,12 +76,12 @@ export default function Navbar() {
                 onClick={() => handleNav(link.href)}
                 style={{
                   background: "none", border: "none", cursor: "pointer",
-                  color: "#7A8FA8", fontSize: "0.88rem", fontFamily: "'DM Sans', sans-serif",
-                  fontWeight: 400, letterSpacing: "0.02em", transition: "color 0.2s",
+                  color: "var(--body)", fontSize: "0.9rem",
+                  fontWeight: 500, letterSpacing: "0.01em", transition: "color 0.2s",
                   padding: 0,
                 }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = "#fff")}
-                onMouseLeave={(e) => (e.currentTarget.style.color = "#7A8FA8")}
+                onMouseEnter={(e) => (e.currentTarget.style.color = "var(--red)")}
+                onMouseLeave={(e) => (e.currentTarget.style.color = "var(--body)")}
               >
                 {link.label}
               </button>
@@ -98,14 +94,14 @@ export default function Navbar() {
           onClick={() => handleNav("#contact")}
           className="hidden md:block"
           style={{
-            background: "#C0392B", color: "white",
-            padding: "0.55rem 1.4rem", borderRadius: 6, border: "none",
-            fontFamily: "'Syne', sans-serif", fontSize: "0.85rem", fontWeight: 600,
-            letterSpacing: "0.03em", cursor: "pointer",
+            background: "var(--red)", color: "white",
+            padding: "0.6rem 1.4rem", borderRadius: 8, border: "none",
+            fontSize: "0.86rem", fontWeight: 600,
+            letterSpacing: "0.01em", cursor: "pointer",
             transition: "background 0.2s, transform 0.15s",
           }}
-          onMouseEnter={(e) => { e.currentTarget.style.background = "#E74C3C"; e.currentTarget.style.transform = "translateY(-1px)"; }}
-          onMouseLeave={(e) => { e.currentTarget.style.background = "#C0392B"; e.currentTarget.style.transform = "translateY(0)"; }}
+          onMouseEnter={(e) => { e.currentTarget.style.background = "var(--red-light)"; e.currentTarget.style.transform = "translateY(-1px)"; }}
+          onMouseLeave={(e) => { e.currentTarget.style.background = "var(--red)"; e.currentTarget.style.transform = "translateY(0)"; }}
         >
           Get in Touch →
         </button>
@@ -114,7 +110,7 @@ export default function Navbar() {
         <button
           className="md:hidden"
           onClick={() => setMenuOpen(!menuOpen)}
-          style={{ background: "none", border: "none", color: "#E8EEF6", cursor: "pointer", padding: 4 }}
+          style={{ background: "none", border: "none", color: "var(--ink)", cursor: "pointer", padding: 4 }}
         >
           {menuOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
@@ -129,9 +125,11 @@ export default function Navbar() {
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
             style={{
-              position: "fixed", top: 65, left: 0, right: 0, zIndex: 99,
-              background: "rgba(8,11,16,0.98)",
-              borderBottom: "1px solid rgba(255,255,255,0.08)",
+              position: "fixed", top: 90, left: 0, right: 0, zIndex: 99,
+              background: "rgba(255,255,255,0.98)",
+              backdropFilter: "blur(16px)",
+              WebkitBackdropFilter: "blur(16px)",
+              borderBottom: "1px solid var(--line)",
               padding: "1.5rem 6%",
               display: "flex", flexDirection: "column", gap: "1.2rem",
             }}
@@ -142,9 +140,9 @@ export default function Navbar() {
                 onClick={() => handleNav(link.href)}
                 style={{
                   background: "none", border: "none", cursor: "pointer",
-                  color: "#E8EEF6", fontSize: "1rem", fontFamily: "'DM Sans', sans-serif",
-                  fontWeight: 400, textAlign: "left", padding: "0.3rem 0",
-                  borderBottom: "1px solid rgba(255,255,255,0.05)",
+                  color: "var(--ink)", fontSize: "1rem",
+                  fontWeight: 500, textAlign: "left", padding: "0.3rem 0",
+                  borderBottom: "1px solid var(--line-soft)",
                 }}
               >
                 {link.label}
@@ -153,10 +151,10 @@ export default function Navbar() {
             <button
               onClick={() => handleNav("#contact")}
               style={{
-                background: "#C0392B", color: "white",
-                padding: "0.7rem", borderRadius: 6, border: "none",
-                fontFamily: "'Syne', sans-serif", fontWeight: 600, cursor: "pointer",
-                fontSize: "0.9rem", marginTop: "0.3rem",
+                background: "var(--red)", color: "white",
+                padding: "0.75rem", borderRadius: 8, border: "none",
+                fontWeight: 600, cursor: "pointer",
+                fontSize: "0.92rem", marginTop: "0.3rem",
               }}
             >
               Get in Touch →

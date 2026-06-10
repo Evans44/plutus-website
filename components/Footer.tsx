@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 
 const footerLinks = {
   Services: [
@@ -15,6 +16,7 @@ const footerLinks = {
     "AI Real Estate Bot",
     "Terraform Modules",
     "Monitoring System",
+    "Outreach Engine",
   ],
 };
 
@@ -25,38 +27,40 @@ export default function Footer() {
 
   return (
     <footer style={{
-      background: "#080B10",
-      borderTop: "1px solid rgba(255,255,255,0.06)",
-      padding: "3rem 6% 2rem",
+      background: "var(--ink)",
+      borderTop: "3px solid var(--red)",
+      padding: "3.5rem 6% 2rem",
     }}>
       <div style={{
         display: "grid",
         gridTemplateColumns: "2fr 1fr 1fr",
         gap: "3rem",
         paddingBottom: "2.5rem",
-        borderBottom: "1px solid rgba(255,255,255,0.06)",
+        borderBottom: "1px solid rgba(255,255,255,0.1)",
         marginBottom: "2rem",
       }}
         className="footer-grid"
       >
         {/* Brand */}
         <div>
-          <div style={{ display: "flex", alignItems: "center", gap: "0.7rem", marginBottom: "1rem" }}>
-            <div style={{
-              width: 36, height: 36, borderRadius: 8, background: "#C0392B",
-              display: "flex", alignItems: "center", justifyContent: "center",
-              fontFamily: "'Syne', sans-serif", fontWeight: 800, color: "white", fontSize: "0.95rem",
-            }}>P</div>
-            <div>
-              <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, color: "#fff", fontSize: "0.95rem" }}>PLUTUS</div>
-              <div style={{ fontSize: "0.58rem", color: "#7A8FA8", letterSpacing: "0.07em", textTransform: "uppercase" }}>
-                Integrated Services & Resources
-              </div>
-            </div>
+          <div style={{ marginBottom: "1.3rem" }}>
+            <span style={{
+              display: "inline-flex", background: "#fff",
+              borderRadius: 12, padding: "0.7rem 1rem",
+              boxShadow: "0 6px 18px rgba(0,0,0,0.25)",
+            }}>
+              <Image
+                src="/plutus-logo.png"
+                alt="PLUTUS Integrated Services & Resources Ltd"
+                width={150}
+                height={60}
+                style={{ height: 50, width: "auto", display: "block" }}
+              />
+            </span>
           </div>
-          <p style={{ fontSize: "0.84rem", color: "#7A8FA8", lineHeight: 1.7, maxWidth: 280 }}>
-            Nigeria&apos;s leading cloud solutions and IT modernization consultancy.
-            AWS-powered. Locally grounded. Outcome-focused.
+          <p style={{ fontSize: "0.85rem", color: "rgba(255,255,255,0.6)", lineHeight: 1.7, maxWidth: 300 }}>
+            A cloud solutions and IT modernization consultancy — rooted in Nigeria, serving the world.
+            AWS-powered. Outcome-focused.
           </p>
         </div>
 
@@ -64,8 +68,8 @@ export default function Footer() {
         {Object.entries(footerLinks).map(([heading, links]) => (
           <div key={heading}>
             <h4 style={{
-              fontSize: "0.78rem", textTransform: "uppercase",
-              letterSpacing: "0.08em", color: "#fff", marginBottom: "1.2rem",
+              fontSize: "0.76rem", textTransform: "uppercase",
+              letterSpacing: "0.08em", color: "#fff", marginBottom: "1.2rem", fontWeight: 700,
             }}>
               {heading}
             </h4>
@@ -76,11 +80,11 @@ export default function Footer() {
                     onClick={() => scrollTo(`#${heading.toLowerCase()}`)}
                     style={{
                       background: "none", border: "none", cursor: "pointer",
-                      fontSize: "0.84rem", color: "#7A8FA8", padding: 0,
-                      transition: "color 0.2s",
+                      fontSize: "0.84rem", color: "rgba(255,255,255,0.6)", padding: 0,
+                      transition: "color 0.2s", textAlign: "left",
                     }}
-                    onMouseEnter={(e) => (e.currentTarget.style.color = "#E8EEF6")}
-                    onMouseLeave={(e) => (e.currentTarget.style.color = "#7A8FA8")}
+                    onMouseEnter={(e) => (e.currentTarget.style.color = "var(--red-light)")}
+                    onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.6)")}
                   >
                     {link}
                   </button>
@@ -92,12 +96,12 @@ export default function Footer() {
       </div>
 
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "0.5rem" }}>
-        <p style={{ fontSize: "0.78rem", color: "#7A8FA8" }}>
+        <p style={{ fontSize: "0.78rem", color: "rgba(255,255,255,0.5)" }}>
           © {new Date().getFullYear()} PLUTUS Integrated Services & Resources Ltd. All rights reserved.
         </p>
         <span style={{
-          fontSize: "0.73rem", color: "#7A8FA8",
-          background: "rgba(255,255,255,0.04)", padding: "0.28rem 0.75rem", borderRadius: 4,
+          fontSize: "0.73rem", color: "rgba(255,255,255,0.7)",
+          background: "rgba(255,255,255,0.08)", padding: "0.3rem 0.8rem", borderRadius: 5,
         }}>
           RC: 6865982
         </span>
