@@ -1,6 +1,6 @@
 export interface Service {
   id: string;
-  icon: string;
+  icon: string; // lucide-react icon name
   title: string;
   description: string;
   tags: string[];
@@ -15,7 +15,7 @@ export interface Product {
 }
 
 export interface Value {
-  icon: string;
+  icon: string; // lucide-react icon name
   title: string;
   description: string;
 }
@@ -35,7 +35,7 @@ export const stats: Stat[] = [
 export const services: Service[] = [
   {
     id: "cloud-infra",
-    icon: "☁️",
+    icon: "Cloud",
     title: "Cloud Infrastructure (AWS)",
     description:
       "Design, deploy and manage robust AWS environments. We handle migrations from legacy systems, security hardening, and Infrastructure as Code using Terraform & CloudFormation.",
@@ -43,7 +43,7 @@ export const services: Service[] = [
   },
   {
     id: "cost-opt",
-    icon: "💰",
+    icon: "TrendingDown",
     title: "Cloud Cost Optimization",
     description:
       "Deep-dive AWS cost audits, resource rightsizing, Reserved Instance planning, and FinOps frameworks that align cloud spending with your business outcomes.",
@@ -51,7 +51,7 @@ export const services: Service[] = [
   },
   {
     id: "automation",
-    icon: "🤖",
+    icon: "Bot",
     title: "Intelligent Process Automation",
     description:
       "AI-powered document processing, custom workflow automation with AWS AI/ML, intelligent chatbots, and automated reporting — eliminating manual bottlenecks.",
@@ -59,7 +59,7 @@ export const services: Service[] = [
   },
   {
     id: "devops",
-    icon: "⚙️",
+    icon: "Infinity",
     title: "DevOps & Infrastructure Mgmt",
     description:
       "CI/CD pipeline design, real-time infrastructure monitoring with Prometheus & Grafana, disaster recovery planning, and 24/7 managed cloud operations.",
@@ -67,7 +67,7 @@ export const services: Service[] = [
   },
   {
     id: "procurement",
-    icon: "🖥️",
+    icon: "Cpu",
     title: "IT Hardware & Software Procurement",
     description:
       "Enterprise-grade hardware supply and installation, genuine software licensing, workstation setup, and networking infrastructure from verified global vendors.",
@@ -75,7 +75,7 @@ export const services: Service[] = [
   },
   {
     id: "consultancy",
-    icon: "📋",
+    icon: "Compass",
     title: "Consultancy & Project Management",
     description:
       "End-to-end digital transformation strategy, cloud readiness assessments, regulatory advisory (NDPR, ISO), and certified project execution using Agile, Scrum, and PRINCE2.",
@@ -90,7 +90,7 @@ export const products: Product[] = [
     title: "Intelligent Order Routing & 3PL Automation Agent",
     description:
       "An AI-driven agent that intelligently routes orders to the right third-party logistics providers, automates dispatch workflows, and reduces manual order handling — scaling your fulfillment operations effortlessly.",
-    metric: { value: "⚡ Auto", label: "End-to-end order routing with zero manual intervention" },
+    metric: { value: "Auto", label: "End-to-end order routing with zero manual intervention" },
   },
   {
     id: 2,
@@ -98,7 +98,7 @@ export const products: Product[] = [
     title: "Intelligent CRM Lead Routing System — Automated Sales Assignment",
     description:
       "Automatically scores, qualifies, and routes incoming CRM leads to the best-fit sales agent based on territory, expertise, and availability. Eliminates manual handoffs and boosts conversion rates.",
-    metric: { value: "🎯 Smart", label: "AI-driven lead scoring and instant assignment" },
+    metric: { value: "Smart", label: "AI-driven lead scoring and instant assignment" },
   },
   {
     id: 3,
@@ -124,18 +124,26 @@ export const products: Product[] = [
       "A comprehensive observability stack that proactively detects, alerts, and diagnoses infrastructure incidents before they impact users — combining CloudWatch, Prometheus, and Grafana with automated runbooks.",
     metric: { value: "4h → 12min", label: "Mean time to resolution — a 95% reduction in incident response" },
   },
+  {
+    id: 6,
+    category: "Sales & Outreach",
+    title: "Intelligent Outreach Engine — Permission-First B2B Prospecting",
+    description:
+      "A compliance-first outreach system that researches and verifies prospects, drafts tailored, personalized messages, and sends only on a human-approved, rate-throttled schedule. Every domain is SPF/DKIM-authenticated for deliverability — engineered for genuine 1:1 conversations, never bulk blasting.",
+    metric: { value: "Approved", label: "Every send is human-approved, throttled, and SPF/DKIM-authenticated" },
+  },
 ];
 
 export const coreValues: Value[] = [
-  { icon: "🚀", title: "Innovation-Led", description: "We embrace emerging technologies to solve complex challenges creatively." },
-  { icon: "🔒", title: "Security by Design", description: "Every solution embeds NDPR-aligned security controls and global best practices." },
-  { icon: "🎯", title: "Outcome-Oriented", description: "We measure success by tangible impact — not project completion checkboxes." },
-  { icon: "🤝", title: "Collaboration", description: "We build lasting partnerships through trust, empathy, and shared success." },
+  { icon: "Rocket", title: "Innovation-Led", description: "We embrace emerging technologies to solve complex challenges creatively." },
+  { icon: "ShieldCheck", title: "Security by Design", description: "Every solution embeds NDPR-aligned security controls and global best practices." },
+  { icon: "Target", title: "Outcome-Oriented", description: "We measure success by tangible impact — not project completion checkboxes." },
+  { icon: "Handshake", title: "Collaboration", description: "We build lasting partnerships through trust, empathy, and shared success." },
 ];
 
-export const whyUs = [
-  { icon: "🏅", title: "AWS Certified Team", description: "Internationally recognized certifications backed by real-world Nigerian deployment experience." },
-  { icon: "🌍", title: "Local Regulatory Expertise", description: "Deep knowledge of NDPR, CBN, NCC, and sector-specific compliance requirements." },
-  { icon: "📈", title: "Outcome-Driven", description: "We track measurable KPIs — cost savings, uptime, efficiency gains — not just deliverables." },
-  { icon: "🛡️", title: "Security-First", description: "Every architecture embeds ISO 27001-aligned security controls from the ground up." },
+export const whyUs: Value[] = [
+  { icon: "Award", title: "AWS Certified Team", description: "Internationally recognized certifications backed by real-world deployment experience across Nigeria and beyond." },
+  { icon: "Landmark", title: "Local Regulatory Expertise", description: "Deep knowledge of NDPR, CBN, NCC, and sector-specific compliance requirements." },
+  { icon: "TrendingUp", title: "Outcome-Driven", description: "We track measurable KPIs — cost savings, uptime, efficiency gains — not just deliverables." },
+  { icon: "Shield", title: "Security-First", description: "Every architecture embeds ISO 27001-aligned security controls from the ground up." },
 ];
