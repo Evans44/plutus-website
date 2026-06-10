@@ -1,13 +1,16 @@
 "use client";
 import { motion } from "framer-motion";
+import { Rocket, ShieldCheck, Target, Handshake, type LucideIcon } from "lucide-react";
 import { coreValues } from "@/lib/data";
 import SectionHeader from "@/components/ui/SectionHeader";
+
+const iconMap: Record<string, LucideIcon> = { Rocket, ShieldCheck, Target, Handshake };
 
 export default function About() {
   return (
     <section
       id="about"
-      style={{ padding: "6rem 6%", background: "#0E1218" }}
+      style={{ padding: "7rem 6%", background: "var(--paper-2)" }}
     >
       <div style={{
         display: "grid",
@@ -19,40 +22,43 @@ export default function About() {
         <div>
           <SectionHeader
             tag="Who We Are"
-            title="Cloud-Native Expertise.<br/>Nigerian Insight."
-            subtitle="We are a Nigerian-based cloud solutions and IT modernization consultancy, blending internationally recognized AWS certifications with a deep understanding of Nigeria's regulatory landscape."
+            title="Cloud-Native Expertise.<br/>Global Reach, Nigerian Roots."
+            subtitle="We are a cloud solutions and IT modernization consultancy rooted in Nigeria and serving clients worldwide — blending internationally recognized AWS certifications with deep regional regulatory insight."
           />
 
           <div style={{ display: "flex", flexDirection: "column", gap: "0.85rem" }}>
-            {coreValues.map((v, i) => (
-              <motion.div
-                key={v.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.45, delay: i * 0.09 }}
-                style={{
-                  display: "flex", alignItems: "flex-start", gap: "1rem",
-                  padding: "1rem", borderRadius: 10,
-                  background: "rgba(255,255,255,0.02)",
-                  border: "1px solid rgba(255,255,255,0.05)",
-                  transition: "background 0.2s",
-                }}
-                whileHover={{ background: "rgba(255,255,255,0.04)" }}
-              >
-                <div style={{
-                  width: 36, height: 36, borderRadius: 8, flexShrink: 0,
-                  background: "rgba(192,57,43,0.1)", border: "1px solid rgba(192,57,43,0.2)",
-                  display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1rem",
-                }}>
-                  {v.icon}
-                </div>
-                <div>
-                  <h4 style={{ fontSize: "0.92rem", color: "#fff", marginBottom: "0.2rem" }}>{v.title}</h4>
-                  <p style={{ fontSize: "0.82rem", color: "#7A8FA8", lineHeight: 1.55 }}>{v.description}</p>
-                </div>
-              </motion.div>
-            ))}
+            {coreValues.map((v, i) => {
+              const Icon = iconMap[v.icon] ?? Rocket;
+              return (
+                <motion.div
+                  key={v.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.45, delay: i * 0.09 }}
+                  style={{
+                    display: "flex", alignItems: "flex-start", gap: "1rem",
+                    padding: "1.1rem", borderRadius: 12,
+                    background: "var(--paper)",
+                    border: "1px solid var(--line)",
+                    transition: "border-color 0.2s, box-shadow 0.2s",
+                  }}
+                  whileHover={{ boxShadow: "0 12px 30px rgba(17,19,21,0.06)" }}
+                >
+                  <div style={{
+                    width: 38, height: 38, borderRadius: 10, flexShrink: 0,
+                    background: "var(--red-soft)", border: "1px solid var(--red-line)",
+                    display: "flex", alignItems: "center", justifyContent: "center", color: "var(--red)",
+                  }}>
+                    <Icon size={18} strokeWidth={1.7} />
+                  </div>
+                  <div>
+                    <h4 style={{ fontSize: "0.95rem", fontWeight: 700, color: "var(--ink)", marginBottom: "0.25rem" }}>{v.title}</h4>
+                    <p style={{ fontSize: "0.85rem", color: "var(--body)", lineHeight: 1.6 }}>{v.description}</p>
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
 
@@ -64,29 +70,30 @@ export default function About() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.15 }}
             style={{
-              background: "#141922", border: "1px solid rgba(255,255,255,0.07)",
-              borderRadius: 16, padding: "2.5rem", position: "relative", overflow: "hidden",
+              background: "var(--paper)", border: "1px solid var(--line)",
+              borderRadius: 18, padding: "2.6rem", position: "relative", overflow: "hidden",
+              boxShadow: "0 16px 40px rgba(17,19,21,0.05)",
             }}
           >
             <div style={{
               position: "absolute", top: 0, left: 0, right: 0, height: 3,
-              background: "linear-gradient(90deg, #C0392B, #2563EB)",
+              background: "var(--red)",
             }} />
-            <h3 style={{ fontSize: "1.1rem", color: "#fff", marginBottom: "0.9rem" }}>Our Vision</h3>
-            <p style={{ fontSize: "0.9rem", color: "#7A8FA8", lineHeight: 1.7 }}>
-              To be Nigeria&apos;s leading catalyst for digital transformation, enabling public and
-              private sector institutions to thrive in a cloud-first, AI-powered future.
+            <h3 style={{ fontSize: "1.15rem", fontWeight: 700, color: "var(--ink)", marginBottom: "0.9rem" }}>Our Vision</h3>
+            <p style={{ fontSize: "0.92rem", color: "var(--body)", lineHeight: 1.75 }}>
+              To be a leading catalyst for digital transformation — enabling institutions in Nigeria,
+              across Africa, and internationally to thrive in a cloud-first, AI-powered future.
             </p>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "0.6rem", marginTop: "1.5rem" }}>
-              {["AWS Certified", "NDPR Compliant", "ISO 27001", "FinOps", "DevOps"].map((b, i) => (
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "0.6rem", marginTop: "1.6rem" }}>
+              {["AWS Certified", "NDPR Compliant", "ISO 27001-Aligned", "FinOps", "DevOps"].map((b) => (
                 <span
                   key={b}
                   style={{
-                    background: i < 2 ? "rgba(37,99,235,0.1)" : "rgba(192,57,43,0.1)",
-                    border: `1px solid ${i < 2 ? "rgba(37,99,235,0.25)" : "rgba(192,57,43,0.3)"}`,
-                    color: i < 2 ? "#93C5FD" : "#FCA5A5",
-                    padding: "0.28rem 0.85rem", borderRadius: 50,
-                    fontSize: "0.72rem", fontWeight: 500,
+                    background: "var(--red-soft)",
+                    border: "1px solid var(--red-line)",
+                    color: "var(--red)",
+                    padding: "0.3rem 0.85rem", borderRadius: 50,
+                    fontSize: "0.72rem", fontWeight: 600,
                   }}
                 >
                   {b}
@@ -101,16 +108,16 @@ export default function About() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.25 }}
             style={{
-              padding: "1.6rem", borderRadius: 12,
-              background: "rgba(255,255,255,0.02)",
-              border: "1px solid rgba(255,255,255,0.06)",
+              padding: "1.7rem", borderRadius: 14,
+              background: "var(--paper)",
+              border: "1px solid var(--line)",
             }}
           >
-            <p style={{ fontSize: "0.88rem", color: "#7A8FA8", lineHeight: 1.75 }}>
-              <strong style={{ color: "#E8EEF6" }}>Mission: </strong>
-              To empower Nigerian organizations with intelligent cloud solutions and automation
-              technologies that drive operational efficiency, reduce costs, and enhance service
-              delivery through certified expertise and local insight.
+            <p style={{ fontSize: "0.9rem", color: "var(--body)", lineHeight: 1.75 }}>
+              <strong style={{ color: "var(--ink)", fontWeight: 700 }}>Mission: </strong>
+              To empower organizations — in Nigeria and around the world — with intelligent cloud
+              solutions and automation technologies that drive operational efficiency, reduce costs,
+              and enhance service delivery through certified expertise and local insight.
             </p>
           </motion.div>
         </div>

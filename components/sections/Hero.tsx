@@ -1,5 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 import { stats } from "@/lib/data";
 
 export default function Hero() {
@@ -14,46 +15,45 @@ export default function Hero() {
         minHeight: "100vh",
         display: "flex",
         alignItems: "center",
-        padding: "8rem 6% 5rem",
+        padding: "9rem 6% 5rem",
         position: "relative",
         overflow: "hidden",
+        background: "var(--paper)",
       }}
     >
-      {/* Background gradients */}
+      {/* Soft brand wash */}
       <div style={{
         position: "absolute", inset: 0, zIndex: 0,
-        background: `
-          radial-gradient(ellipse 80% 60% at 65% 40%, rgba(37,99,235,0.1) 0%, transparent 70%),
-          radial-gradient(ellipse 40% 40% at 20% 70%, rgba(192,57,43,0.09) 0%, transparent 60%)
-        `,
+        background: "radial-gradient(ellipse 70% 55% at 78% 35%, rgba(192,57,43,0.06) 0%, transparent 70%)",
       }} />
-      {/* Grid */}
+      {/* Faint grid */}
       <div style={{
         position: "absolute", inset: 0, zIndex: 0,
         backgroundImage: `
-          linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px)
+          linear-gradient(rgba(17,19,21,0.025) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(17,19,21,0.025) 1px, transparent 1px)
         `,
-        backgroundSize: "60px 60px",
-        maskImage: "radial-gradient(ellipse 80% 80% at 50% 50%, black, transparent)",
+        backgroundSize: "64px 64px",
+        maskImage: "radial-gradient(ellipse 75% 75% at 40% 45%, black, transparent)",
+        WebkitMaskImage: "radial-gradient(ellipse 75% 75% at 40% 45%, black, transparent)",
       }} />
 
       {/* Content */}
-      <div style={{ position: "relative", zIndex: 1, maxWidth: 720 }}>
+      <div style={{ position: "relative", zIndex: 1, maxWidth: 760 }}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           style={{
-            display: "inline-flex", alignItems: "center", gap: "0.5rem",
-            background: "rgba(192,57,43,0.1)", border: "1px solid rgba(192,57,43,0.28)",
-            color: "#F87171", padding: "0.35rem 1rem", borderRadius: 50,
-            fontSize: "0.75rem", fontWeight: 500, letterSpacing: "0.07em",
-            textTransform: "uppercase", marginBottom: "1.8rem",
+            display: "inline-flex", alignItems: "center", gap: "0.55rem",
+            background: "var(--red-soft)", border: "1px solid var(--red-line)",
+            color: "var(--red)", padding: "0.4rem 1rem", borderRadius: 50,
+            fontSize: "0.72rem", fontWeight: 600, letterSpacing: "0.08em",
+            textTransform: "uppercase", marginBottom: "2rem",
           }}
         >
           <span style={{ fontSize: "0.45rem" }}>●</span>
-          Nigeria's Cloud & AI Partner · RC: 6865982
+          Cloud &amp; AI Partner · RC: 6865982
         </motion.div>
 
         <motion.h1
@@ -61,17 +61,17 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.12 }}
           style={{
-            fontFamily: "'Syne', sans-serif",
-            fontSize: "clamp(2.6rem, 5.5vw, 4.4rem)",
+            fontSize: "clamp(2.7rem, 6vw, 4.8rem)",
             fontWeight: 800,
-            lineHeight: 1.08,
-            color: "#fff",
-            marginBottom: "1.4rem",
+            lineHeight: 1.04,
+            color: "var(--ink)",
+            letterSpacing: "-0.03em",
+            marginBottom: "1.5rem",
           }}
         >
-          Powering Nigeria&apos;s<br />
-          <span style={{ color: "#E74C3C" }}>Digital Future</span>
-          <br />with Cloud & AI
+          Your Cloud &amp; AI Partner —<br />
+          <span style={{ color: "var(--red)" }}>rooted in Nigeria,</span>
+          <br />serving the world.
         </motion.h1>
 
         <motion.p
@@ -79,13 +79,13 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.24 }}
           style={{
-            fontSize: "1.05rem", lineHeight: 1.75, color: "#7A8FA8",
-            maxWidth: 560, marginBottom: "2.4rem",
+            fontSize: "1.1rem", lineHeight: 1.75, color: "var(--body)",
+            maxWidth: 580, marginBottom: "2.6rem", fontWeight: 400,
           }}
         >
-          PLUTUS helps public sector institutions and enterprise clients modernize
-          through AWS infrastructure, intelligent automation, and cloud cost optimization —
-          globally certified, locally grounded.
+          PLUTUS helps public-sector institutions and enterprises — across Nigeria, Africa,
+          and beyond — modernize through AWS infrastructure, intelligent automation, and
+          cloud cost optimization. Globally certified, locally grounded.
         </motion.p>
 
         <motion.div
@@ -97,40 +97,40 @@ export default function Hero() {
           <button
             onClick={() => scrollTo("#services")}
             style={{
-              background: "#C0392B", color: "white",
-              padding: "0.85rem 2rem", borderRadius: 8, border: "none",
-              fontFamily: "'Syne', sans-serif", fontWeight: 600, fontSize: "0.95rem",
+              background: "var(--red)", color: "white",
+              padding: "0.9rem 2rem", borderRadius: 8, border: "none",
+              fontWeight: 600, fontSize: "0.95rem",
               cursor: "pointer", transition: "all 0.2s",
               display: "inline-flex", alignItems: "center", gap: "0.5rem",
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.background = "#E74C3C";
+              e.currentTarget.style.background = "var(--red-light)";
               e.currentTarget.style.transform = "translateY(-2px)";
-              e.currentTarget.style.boxShadow = "0 12px 30px rgba(192,57,43,0.3)";
+              e.currentTarget.style.boxShadow = "0 14px 30px rgba(192,57,43,0.22)";
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.background = "#C0392B";
+              e.currentTarget.style.background = "var(--red)";
               e.currentTarget.style.transform = "translateY(0)";
               e.currentTarget.style.boxShadow = "none";
             }}
           >
-            Explore Services →
+            Explore Services <ArrowRight size={16} />
           </button>
           <button
             onClick={() => scrollTo("#products")}
             style={{
-              border: "1px solid rgba(255,255,255,0.14)", color: "#E8EEF6",
-              padding: "0.85rem 2rem", borderRadius: 8, background: "transparent",
-              fontFamily: "'Syne', sans-serif", fontWeight: 600, fontSize: "0.95rem",
+              border: "1px solid var(--line)", color: "var(--ink)",
+              padding: "0.9rem 2rem", borderRadius: 8, background: "transparent",
+              fontWeight: 600, fontSize: "0.95rem",
               cursor: "pointer", transition: "all 0.2s",
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.background = "rgba(255,255,255,0.06)";
-              e.currentTarget.style.transform = "translateY(-2px)";
+              e.currentTarget.style.background = "var(--paper-2)";
+              e.currentTarget.style.borderColor = "rgba(17,19,21,0.2)";
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.background = "transparent";
-              e.currentTarget.style.transform = "translateY(0)";
+              e.currentTarget.style.borderColor = "var(--line)";
             }}
           >
             View Products
@@ -145,7 +145,7 @@ export default function Hero() {
         transition={{ duration: 0.7, delay: 0.5 }}
         style={{
           position: "absolute", right: "6%", bottom: "12%", zIndex: 1,
-          display: "flex", flexDirection: "column", gap: "1.2rem",
+          display: "flex", flexDirection: "column", gap: "1rem",
         }}
         className="hidden lg:flex"
       >
@@ -156,17 +156,17 @@ export default function Hero() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.6 + i * 0.1 }}
             style={{
-              background: "rgba(255,255,255,0.04)",
-              border: "1px solid rgba(255,255,255,0.08)",
-              backdropFilter: "blur(8px)",
-              borderRadius: 12, padding: "1.2rem 1.8rem", textAlign: "right",
+              background: "var(--paper)",
+              border: "1px solid var(--line)",
+              boxShadow: "0 10px 30px rgba(17,19,21,0.05)",
+              borderRadius: 14, padding: "1.3rem 1.9rem", textAlign: "right",
             }}
           >
-            <div style={{ fontFamily: "'Syne', sans-serif", fontSize: "2rem", fontWeight: 800, color: "#fff", lineHeight: 1 }}>
+            <div style={{ fontSize: "2.1rem", fontWeight: 800, color: "var(--ink)", lineHeight: 1, letterSpacing: "-0.02em" }}>
               {stat.value}
-              <span style={{ fontSize: "1.1rem", color: "#E74C3C" }}>{stat.unit}</span>
+              <span style={{ fontSize: "1.1rem", color: "var(--red)" }}>{stat.unit}</span>
             </div>
-            <div style={{ fontSize: "0.73rem", color: "#7A8FA8", marginTop: "0.3rem", letterSpacing: "0.04em" }}>
+            <div style={{ fontSize: "0.74rem", color: "var(--muted)", marginTop: "0.4rem", letterSpacing: "0.02em" }}>
               {stat.label}
             </div>
           </motion.div>
