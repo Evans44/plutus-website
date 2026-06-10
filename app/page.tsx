@@ -6,6 +6,7 @@ import Products from "@/components/sections/Products";
 import WhyUs from "@/components/sections/WhyUs";
 import Contact from "@/components/sections/Contact";
 import Footer from "@/components/Footer";
+import AskPIA from "@/components/AskPIA";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
       <WhyUs />
       <Contact />
       <Footer />
+      <AskPIA />
     </main>
   );
 }
