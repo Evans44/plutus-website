@@ -145,7 +145,7 @@ export default function Hero() {
         transition={{ duration: 0.7, delay: 0.5 }}
         style={{
           position: "absolute", right: "6%", bottom: "12%", zIndex: 1,
-          display: "flex", flexDirection: "column", gap: "1rem",
+          flexDirection: "column", gap: "1rem",
         }}
         className="hidden lg:flex"
       >
