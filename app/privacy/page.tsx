@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Privacy & Cookies | PLUTUS Integrated Services",
@@ -46,7 +47,7 @@ export default function PrivacyPage() {
       </Section>
 
       <p style={{ marginTop: "2.5rem" }}>
-        <a href="/" style={linkStyle}>&larr; Back to home</a>
+        <Link href="/" style={linkStyle}>&larr; Back to home</Link>
       </p>
     </main>
   );
