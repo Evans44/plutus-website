@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { MessageCircle, X, Send, Sparkles } from "lucide-react";
+import { trackEvent } from "@/lib/analytics";
 
 /**
  * PIA — Plutus Intelligent Assistant chat widget.
@@ -31,6 +32,7 @@ export default function AskPIA() {
   const [loading, setLoading] = useState(false);
   const sessionId = useRef<string>("");
   const scrollRef = useRef<HTMLDivElement>(null);
+  const firstMsgTracked = useRef(false);
 
   // Lazily mint a session id (client only).
   if (!sessionId.current && typeof window !== "undefined") {
@@ -40,7 +42,10 @@ export default function AskPIA() {
 
   // Open via any CTA across the page ("pia:open").
   useEffect(() => {
-    const handler = () => setOpen(true);
+    const handler = () => {
+      trackEvent("pia_open", { source: "cta" });
+      setOpen(true);
+    };
     window.addEventListener("pia:open", handler);
     return () => window.removeEventListener("pia:open", handler);
   }, []);
@@ -57,6 +62,11 @@ export default function AskPIA() {
     setMessages((m) => [...m, { role: "user", text }]);
     setInput("");
     setLoading(true);
+
+    if (!firstMsgTracked.current) {
+      firstMsgTracked.current = true;
+      trackEvent("pia_first_message");
+    }
 
     try {
       const res = await fetch(CHAT_URL, {
@@ -102,7 +112,10 @@ export default function AskPIA() {
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ delay: 0.6, type: "spring", stiffness: 260, damping: 20 }}
-        onClick={() => setOpen((o) => !o)}
+        onClick={() => {
+          if (!open) trackEvent("pia_open", { source: "launcher" });
+          setOpen((o) => !o);
+        }}
         aria-label={open ? "Close chat" : "Chat with PIA"}
         style={{
           position: "fixed", bottom: 24, right: 24, zIndex: 1000,
