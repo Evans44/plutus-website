@@ -38,7 +38,7 @@ export const services: Service[] = [
     icon: "Cloud",
     title: "Cloud Infrastructure (AWS)",
     description:
-      "Design, deploy and manage robust AWS environments. We handle migrations from legacy systems, security hardening, and Infrastructure as Code using Terraform & CloudFormation.",
+      "Run faster, more reliable systems without the firefighting. We design, migrate, and harden your AWS environment — and codify it with Terraform & CloudFormation so it's repeatable, secure, and built to scale.",
     tags: ["Architecture Design", "Cloud Migration", "IaC / Terraform", "High Availability"],
   },
   {
@@ -46,7 +46,7 @@ export const services: Service[] = [
     icon: "TrendingDown",
     title: "Cloud Cost Optimization",
     description:
-      "Deep-dive AWS cost audits, resource rightsizing, Reserved Instance planning, and FinOps frameworks that align cloud spending with your business outcomes.",
+      "Stop overpaying for cloud. We audit your AWS spend, rightsize what's bloated, and put FinOps discipline in place — so your bill reflects what you actually use, not idle capacity.",
     tags: ["AWS Cost Audits", "Rightsizing", "FinOps", "Cost Explorer"],
   },
   {
@@ -54,7 +54,7 @@ export const services: Service[] = [
     icon: "Bot",
     title: "Intelligent Process Automation",
     description:
-      "AI-powered document processing, custom workflow automation with AWS AI/ML, intelligent chatbots, and automated reporting — eliminating manual bottlenecks.",
+      "Give your team their hours back. We automate the manual, error-prone work — document processing, approvals, reporting, and customer conversations — so your people spend time on judgment, not data entry.",
     tags: ["Amazon Textract", "AWS Lambda", "Chatbots", "ML Workflows"],
   },
   {
@@ -62,7 +62,7 @@ export const services: Service[] = [
     icon: "Infinity",
     title: "DevOps & Infrastructure Mgmt",
     description:
-      "CI/CD pipeline design, real-time infrastructure monitoring with Prometheus & Grafana, disaster recovery planning, and 24/7 managed cloud operations.",
+      "Ship faster and sleep better. CI/CD pipelines, real-time monitoring, and disaster-recovery plans — backed by 24/7 managed operations that catch issues before your users do.",
     tags: ["CI/CD Pipelines", "CloudWatch", "DR Planning", "24/7 Ops"],
   },
   {
@@ -70,7 +70,7 @@ export const services: Service[] = [
     icon: "Cpu",
     title: "IT Hardware & Software Procurement",
     description:
-      "Enterprise-grade hardware supply and installation, genuine software licensing, workstation setup, and networking infrastructure from verified global vendors.",
+      "Equip your teams without the procurement headache. Genuine hardware, licensed software, workstations, and networking — sourced from verified global vendors and installed ready to work.",
     tags: ["Hardware Supply", "MS 365", "Networking", "SaaS Platforms"],
   },
   {
@@ -78,7 +78,7 @@ export const services: Service[] = [
     icon: "Compass",
     title: "Consultancy & Project Management",
     description:
-      "End-to-end digital transformation strategy, cloud readiness assessments, regulatory advisory (NDPR, ISO), and certified project execution using Agile, Scrum, and PRINCE2.",
+      "Move from plan to delivery without the false starts. We map your transformation, assess cloud readiness, guide NDPR/ISO compliance, and run delivery on Agile, Scrum, or PRINCE2 — so projects actually land.",
     tags: ["Digital Strategy", "NDPR Advisory", "Agile / Scrum", "ICT Governance"],
   },
 ];
@@ -89,7 +89,7 @@ export const products: Product[] = [
     category: "Logistics & Operations",
     title: "Intelligent Order Routing & 3PL Automation Agent",
     description:
-      "An AI-driven agent that intelligently routes orders to the right third-party logistics providers, automates dispatch workflows, and reduces manual order handling — scaling your fulfillment operations effortlessly.",
+      "Scale fulfillment without scaling your ops team. Every order is routed to the right 3PL and dispatched automatically — so orders keep moving on their own, even on your busiest days.",
     metric: { value: "Auto", label: "End-to-end order routing with zero manual intervention" },
   },
   {
@@ -97,7 +97,7 @@ export const products: Product[] = [
     category: "Sales & CRM",
     title: "Intelligent CRM Lead Routing System — Automated Sales Assignment",
     description:
-      "Automatically scores, qualifies, and routes incoming CRM leads to the best-fit sales agent based on territory, expertise, and availability. Eliminates manual handoffs and boosts conversion rates.",
+      "Stop losing leads to slow handoffs. Each incoming lead is scored, qualified, and routed to the best-fit rep in seconds — so the right person follows up while the lead is still warm.",
     metric: { value: "Smart", label: "AI-driven lead scoring and instant assignment" },
   },
   {
@@ -113,7 +113,7 @@ export const products: Product[] = [
     category: "Cloud Infrastructure",
     title: "Production Terraform Modules for AWS Infrastructure",
     description:
-      "Battle-tested, production-ready Terraform modules for spinning up secure, scalable AWS environments. Covers VPC, IAM, ECS, RDS, S3, and more — following AWS Well-Architected Framework best practices.",
+      "Stand up secure AWS environments fast — never from scratch. Production-ready modules (VPC, IAM, ECS, RDS, S3) built to the AWS Well-Architected Framework, so you deploy with confidence.",
     metric: { value: "IaC", label: "Repeatable, version-controlled infrastructure deployments" },
   },
   {
@@ -129,7 +129,7 @@ export const products: Product[] = [
     category: "Sales & Outreach",
     title: "Intelligent Outreach Engine — Permission-First B2B Prospecting",
     description:
-      "A compliance-first outreach system that researches and verifies prospects, drafts tailored, personalized messages, and sends only on a human-approved, rate-throttled schedule. Every domain is SPF/DKIM-authenticated for deliverability — engineered for genuine 1:1 conversations, never bulk blasting.",
+      "Win real conversations, not spam complaints. This system researches and verifies each prospect, drafts a tailored, personalized message, and sends only on a human-approved, rate-throttled schedule. Every domain is SPF/DKIM-authenticated for deliverability — engineered for genuine 1:1 outreach, never bulk blasting.",
     metric: { value: "Approved", label: "Every send is human-approved, throttled, and SPF/DKIM-authenticated" },
   },
 ];
