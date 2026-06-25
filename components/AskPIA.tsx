@@ -22,6 +22,71 @@ interface ChatMessage {
   text: string;
 }
 
+/**
+ * Render the small Markdown subset the PIA agent emits (bold, headings,
+ * bullet/numbered lists, paragraphs) without pulling in a Markdown library.
+ * Applied to bot messages only — user text is shown verbatim.
+ */
+function renderInline(text: string, keyPrefix: string) {
+  // Split on **bold** spans, keeping the delimiters.
+  return text.split(/(\*\*[^*]+\*\*)/g).map((part, i) =>
+    /^\*\*[^*]+\*\*$/.test(part) ? (
+      <strong key={`${keyPrefix}-${i}`}>{part.slice(2, -2)}</strong>
+    ) : (
+      <span key={`${keyPrefix}-${i}`}>{part}</span>
+    )
+  );
+}
+
+function MarkdownLite({ text }: { text: string }) {
+  const out: React.ReactNode[] = [];
+  text.split("\n").forEach((raw, i) => {
+    const line = raw.trimEnd();
+    if (line.trim() === "") {
+      out.push(<div key={`sp-${i}`} style={{ height: "0.45rem" }} />);
+      return;
+    }
+    const heading = line.match(/^(#{1,4})\s+(.*)$/);
+    if (heading) {
+      out.push(
+        <div
+          key={`h-${i}`}
+          style={{
+            fontWeight: 700,
+            fontSize: heading[1].length <= 2 ? "0.95rem" : "0.9rem",
+            margin: "0.35rem 0 0.1rem",
+          }}
+        >
+          {renderInline(heading[2], `h-${i}`)}
+        </div>
+      );
+      return;
+    }
+    const bullet = line.match(/^\s*[-*]\s+(.*)$/);
+    if (bullet) {
+      out.push(
+        <div key={`b-${i}`} style={{ display: "flex", gap: "0.45rem", paddingLeft: "0.15rem" }}>
+          <span style={{ color: "var(--red)", flexShrink: 0 }}>•</span>
+          <span>{renderInline(bullet[1], `b-${i}`)}</span>
+        </div>
+      );
+      return;
+    }
+    const numbered = line.match(/^\s*(\d+)\.\s+(.*)$/);
+    if (numbered) {
+      out.push(
+        <div key={`n-${i}`} style={{ display: "flex", gap: "0.45rem", paddingLeft: "0.15rem" }}>
+          <span style={{ fontWeight: 600, color: "var(--red)", flexShrink: 0 }}>{numbered[1]}.</span>
+          <span>{renderInline(numbered[2], `n-${i}`)}</span>
+        </div>
+      );
+      return;
+    }
+    out.push(<div key={`p-${i}`}>{renderInline(line, `p-${i}`)}</div>);
+  });
+  return <>{out}</>;
+}
+
 const GREETING =
   "Hi, I'm PIA — the Plutus Intelligent Assistant. Ask me about our cloud & AI services and products, or tell me about your project and I'll capture your details and connect you with the right specialist.";
 
@@ -215,7 +280,7 @@ export default function AskPIA() {
                     whiteSpace: "pre-wrap", wordBreak: "break-word",
                   }}
                 >
-                  {m.text}
+                  {m.role === "bot" ? <MarkdownLite text={m.text} /> : m.text}
                 </div>
               ))}
               {loading && (

@@ -14,7 +14,7 @@ export default function Services() {
       <SectionHeader
         tag="What We Do"
         title="Comprehensive IT Services<br/>Built for Scale"
-        subtitle="From cloud architecture to AI automation — everything your organization needs to modernize with confidence."
+        subtitle="Less overspend, fewer outages, fewer manual hours — delivered through cloud architecture, automation, and managed operations built to scale."
       />
 
       <div style={{

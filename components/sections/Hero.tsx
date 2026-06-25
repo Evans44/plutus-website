@@ -83,9 +83,10 @@ export default function Hero() {
             maxWidth: 580, marginBottom: "2.6rem", fontWeight: 400,
           }}
         >
-          PLUTUS helps public-sector institutions and enterprises — across Nigeria, Africa,
-          and beyond — modernize through AWS infrastructure, intelligent automation, and
-          cloud cost optimization. Globally certified, locally grounded.
+          Cut cloud costs, clear manual bottlenecks, and keep critical systems running —
+          without the downtime, overspend, or operational chaos. We help public-sector
+          institutions and enterprises across Nigeria, Africa, and beyond modernize on AWS.
+          Globally certified, locally grounded.
         </motion.p>
 
         <motion.div
