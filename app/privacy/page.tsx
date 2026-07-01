@@ -2,9 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Privacy & Cookies | PLUTUS Integrated Services",
+  title: "Privacy & Cookies",
   description:
     "How Plutus Integrated Services & Resources Ltd collects, uses, and protects your data, including analytics cookies and contact details.",
+  alternates: { canonical: "/privacy" },
 };
 
 const UPDATED = "23 June 2026";
