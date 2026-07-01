@@ -16,17 +16,58 @@ const inter = Inter({
 // Override per-environment with NEXT_PUBLIC_GA_ID (e.g. unset it on preview deploys).
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID ?? "G-N8WZSJYEEK";
 
+const SITE_URL = "https://plutusintegrated.com";
+const SITE_NAME = "PLUTUS Integrated Services & Resources Ltd";
+const TITLE = `${SITE_NAME} | Cloud & AI Partner`;
+const DESCRIPTION =
+  "Your Cloud & AI partner — rooted in Nigeria, serving the world. AWS infrastructure, intelligent automation, cloud cost optimization, and DevOps for institutions and enterprises.";
+
 export const metadata: Metadata = {
-  title: "PLUTUS Integrated Services & Resources Ltd | Cloud & AI Partner",
-  description:
-    "Your Cloud & AI partner — rooted in Nigeria, serving the world. AWS infrastructure, intelligent automation, cloud cost optimization, and DevOps for institutions and enterprises.",
+  metadataBase: new URL(SITE_URL),
+  title: { default: TITLE, template: "%s | PLUTUS Integrated Services" },
+  description: DESCRIPTION,
   keywords: ["AWS", "cloud solutions", "AI automation", "Nigeria", "IT consultancy", "DevOps", "FinOps", "Abuja"],
+  alternates: { canonical: "/" },
+  // og:image / twitter:image are auto-wired from app/opengraph-image.tsx and
+  // app/twitter-image.tsx (generated 1200×630 card) — don't list images here too.
+  openGraph: {
+    type: "website",
+    url: SITE_URL,
+    siteName: SITE_NAME,
+    title: TITLE,
+    description: DESCRIPTION,
+    locale: "en_NG",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: DESCRIPTION,
+  },
+};
+
+// Organization structured data — makes the brand eligible for rich results /
+// a knowledge panel and feeds entity recognition. Rendered server-side so
+// crawlers see it in the initial HTML.
+const ORG_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: SITE_NAME,
+  url: SITE_URL,
+  logo: `${SITE_URL}/plutus-logo.png`,
+  description: DESCRIPTION,
+  email: "info@plutusintegrated.com",
+  telephone: "+2348026810696",
+  address: { "@type": "PostalAddress", addressLocality: "Abuja", addressCountry: "NG" },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={inter.variable}>
       <body className={inter.className}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(ORG_JSONLD) }}
+        />
         {children}
         <CookieConsent />
         {GA_ID && (
@@ -40,7 +81,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 function gtag(){dataLayer.push(arguments);}
 window.gtag = gtag;
 var c='denied';try{if(localStorage.getItem('plutus-cookie-consent')==='granted')c='granted';}catch(e){}
+// Internal/test-traffic self-exclusion (CGNAT/mobile-proof, no IP needed):
+// open any page with ?plutus_internal=1 to flag this browser (persists), =0 to clear.
+// Flagged hits carry traffic_type=internal so GA4's Internal Traffic filter drops them.
+var ti='0';try{var qs=new URLSearchParams(location.search);if(qs.has('plutus_internal')){ti=qs.get('plutus_internal')==='0'?'0':'1';localStorage.setItem('plutus-internal',ti);}else if(localStorage.getItem('plutus-internal')==='1'){ti='1';}}catch(e){}
 gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:c,wait_for_update:500});
+if(ti==='1'){gtag('set',{traffic_type:'internal'});}
 gtag('js', new Date());
 gtag('config', '${GA_ID}');`}
             </Script>
