@@ -45,6 +45,14 @@ export const metadata: Metadata = {
   },
 };
 
+// sameAs binds this website to the SAME entity's other official profiles. It is the
+// single strongest signal for disambiguating us from unrelated "Plutus" entities in
+// Google's Knowledge Graph. Keep these pointing ONLY at profiles we actually own.
+const SAME_AS: string[] = [
+  "https://www.linkedin.com/company/plutus-integrated-services-ltd/",
+  "https://share.google/2FLHqkzuAbB3DJDGF", // Google Business Profile (KG entity /g/11zglwcrd9)
+];
+
 // Organization structured data — makes the brand eligible for rich results /
 // a knowledge panel and feeds entity recognition. Rendered server-side so
 // crawlers see it in the initial HTML.
@@ -52,12 +60,28 @@ const ORG_JSONLD = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: SITE_NAME,
+  alternateName: "Plutus Integrated Services",
   url: SITE_URL,
   logo: `${SITE_URL}/plutus-logo.png`,
   description: DESCRIPTION,
   email: "info@plutusintegrated.com",
   telephone: "+2348026810696",
-  address: { "@type": "PostalAddress", addressLocality: "Abuja", addressCountry: "NG" },
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "House 11, 69 Road, Opposite The Hub Stores, Gwarinpa",
+    addressLocality: "Abuja",
+    addressRegion: "FCT",
+    addressCountry: "NG",
+  },
+  contactPoint: {
+    "@type": "ContactPoint",
+    telephone: "+2348026810696",
+    email: "info@plutusintegrated.com",
+    contactType: "customer service",
+    areaServed: "NG",
+    availableLanguage: ["en"],
+  },
+  ...(SAME_AS.length ? { sameAs: SAME_AS } : {}),
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
